@@ -21,8 +21,10 @@ public class Us_09_10_11Page {
 
     @FindBy(id = "search-ssn")
     public WebElement searchSSNKutusu;
-    @FindBy(xpath = "//button[@type='button']")
+
+    @FindBy(xpath = "//button[@class='btn btn-secondary']")
     public WebElement searchButonu;
+
     @FindBy(id = "tp-customer-firstName")
     public WebElement firstNameKutusu;
     @FindBy(id = "tp-customer-lastName")
@@ -53,7 +55,7 @@ public class Us_09_10_11Page {
     public WebElement userDropDownKutusu;
     @FindBy(id = "tp-customer-account")
     public WebElement customerMultipleKutusu;
-    @FindBy(id = "zelleEnrolled")
+    @FindBy(id = "tp-customer-zelleEnrolled")
     public WebElement zelleKutucugu;
     @FindBy(id = "save-entity")
     public WebElement saveButonu;
@@ -61,6 +63,11 @@ public class Us_09_10_11Page {
     @FindBy(xpath = "//div[@class='invalid-feedback']")
     public WebElement doldurulmasiZorunluMesaji;
 
+    @FindBy(xpath = "//span[.='Customers']")
+    public WebElement kayitBasarili;
+
+    @FindBy(xpath = "//span[.='Create or edit a Customer']")
+    public WebElement testpass;
 
 
 
