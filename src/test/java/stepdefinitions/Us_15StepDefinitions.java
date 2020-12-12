@@ -72,7 +72,6 @@ public class Us_15StepDefinitions {
 
     @Then("Kullanıcı View Transaction butonuna tıklayınca hesap tablosunda geçmiş yapılan işlemleri görebilmeli.")
     public void kullanıcı_View_Transaction_butonuna_tıklar() {
-       Boolean sonuc;
 
         for (WebElement w:us15Page.transactionbuton)
         Driver.waitAndClick(w,2);
@@ -83,7 +82,6 @@ public class Us_15StepDefinitions {
             Assert.assertTrue(false);
         }else{
             Assert.assertTrue(true);
-
         }
     }
 
