@@ -85,6 +85,12 @@ public class Us_15StepDefinitions {
         }
     }
 
+    @Then("Sign Out butonuna tıklayınız.")
+    public void sign_Out_butonuna_tıklayınız() {
+
+        Driver.waitAndClick(us15Page.signOut,1);
+    }
+
 
 
 }

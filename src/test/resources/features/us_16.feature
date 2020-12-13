@@ -1,4 +1,4 @@
-@TC_16Test
+@TC_16Test @SmokeTest
   Feature: US16 TEST
     Background: Gmibank sitesine customer olarak giriş yapma.
       Given ana sayfa "http://www.gmibank.com/" adresine gidiniz
@@ -12,16 +12,23 @@
 
   @TC16_01
   Scenario: TC16_01 From butonuna tıklanınca en az iki hesap gözüküyor mu.
-    Then    From dropdownda en az iki hesap gözüküyormu kontrol et.
+    Given   From dropdownda en az iki hesap gözüküyormu kontrol et.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
+
 
   @TC16_02
   Scenario: TC16_02 From butonunu tıklanınca gözüken hesaplardan istenilen birisi seçilebiliyor mu.
     Then    From butonunu tıkla rastgele bir hesap sec.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
 
   @TC16_03
   Scenario: TC16_03 To butonunu tıklanınca gözüken hesaplardan istenilen birisi seçilebiliyor mu.
     Given   From butonunu tıkla rastgele bir hesap sec.
     Then    To butonunu tıkla rastgele bir hesap sec.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
 
   @TC16_04
   Scenario: TC16_04 Description kutucuğu boş bırakılınca işlem gerçekleşmemeli.
@@ -31,6 +38,8 @@
     And     Balance kutucuğuna "50" yaz
     And     Make Transfer butonunu tıkla
     Then    Description kutucuğunun kırmızı olduğunu doğrula.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
 
   @TC16_05
   Scenario: TC16_05 From üzerinden seçilen hesaptaki para miktarı kadar veya daha düşük miktarı transferi etmeyi dene.
@@ -42,6 +51,8 @@
     And     Bir açıklama yaz.
     And     Make Transfer butonunu tıkla
     Then    ekranda "transfer is done successfully" mesajı görünmeli.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
 
   @TC16_06
   Scenario: TC16_06 From üzerinden seçilen hesaptaki para miktarından daha büyük bir miktarı
@@ -54,5 +65,7 @@
     And     Bir açıklama yaz.
     And     Make Transfer butonunu tıkla
     Then    10-Ekranda "Translation-not-" hata mesajı görünmeli.
+    And     menu butonuna tıklayınız
+    Then    Sign Out butonuna tıklayınız.
 
 
