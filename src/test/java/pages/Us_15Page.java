@@ -49,5 +49,8 @@ public class Us_15Page {
     @FindBy(xpath = "//*[@id=\"app-view-container\"]/div[1]/div/div/div/div[2]/div")
     public WebElement transnotfound;
 
+    @FindBy(xpath = "//*[.='Sign out']")
+    public WebElement signOut;
+
 
 }

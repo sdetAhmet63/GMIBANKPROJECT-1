@@ -134,6 +134,4 @@ public class Us_16StepDefinitions {
         Driver.wait(1);
         Assert.assertTrue(us16Page.transferError.isDisplayed());
     }
-
-
 }
