@@ -1,124 +1,60 @@
   @US_008
-  Feature: Ana sayfadaki şifre bölümü düzenlenir
+    Feature: Ana sayfadaki şifre bölümü düzenlenebilir
+    Background:kullanici giris yapar
+      Given kullanici "http://www.gmibank.com/login" sayfasina gider
+      And gecerli kullanici adini girer "team20customer1"
+      And gecerli sifreyi girer "Team20Cus"
+      And "sign in" tusuna basar
+      And home pageteki kullanici adina "team20customer1" tiklanarak "password" tusuna tiklar
+      And current password kutusuna guncel sifreyi girer "Team20Cus"
 
     @TC_001
-    Scenario: TC_001_Yeni sifre olarak eski sifre kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      And coonfirm new password kutusuna yeni sifreyi girer
+    Scenario: TC_001 Yeni sifre olarak eski sifre kullanilir
+      And  new password kutusuna yeni sifreyi girer "Team20Cus"
+      And  confirm new password kutusuna yeni sifreyi girer "Team20Cus"
       And  save tusuna tiklar
-      Then "password changed " yazisi gorulmez
+      Then "Password changed!" yazisinin olmadigini gorur
+
+
     @TC_002
-    Scenario: TC_002_Yeni sifre olarak eski sifre kullanilmaz
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      And coonfirm new password kutusuna yeni sifreyi girer
-      And  save tusuna tiklar
-      Then "password changed " yazisi gorulur
+    Scenario: TC_002 sifrede en az bir kucuk harf kullanilir
+      And  new password kutusuna yeni sifreyi girer "TEAMCUs"
+      Then password guvenlik seiye cizelgesinin renginin degistigini gözlemler
+
 
     @TC_003
-    Scenario: TC_003_sifrede en az bir kucuk harf kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin turuncu oldugunu gözlemler
+    Scenario: TC_003 sifrede en az bir rakam kullanilir
+      And  new password kutusuna yeni sifreyi girer "GMIBANK1"
+      Then password guvenlik seiye cizelgesinin renginin degistigini gözlemler
 
     @TC_004
-    Scenario: TC_004_sifrede kucuk harf kullanilmaz
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin kirmizi oldugunu gözlemler
+    Scenario: TC_004 sifrede ozel karakter kullanilir
+      And  new password kutusuna yeni sifreyi girer "GMIBANK."
+      Then password guvenlik seiye cizelgesinin renginin degistigini gözlemler
+
     @TC_005
-    Scenario: TC_005_sifrede en az bir kucuk harf kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      And  save tusuna tiklar
-      Then "password changed " yazisi gorulur
+    Scenario: TC_005 alti karakterli bir sifre kullanilir
+      And  new password kutusuna yeni sifreyi girer "GMIban"
+      Then password guvenlik seiye cizelgesinin renginin degismedigini gözlemler
 
     @TC_006
-    Scenario: TC_006_sifrede kucuk harf kullanilmaz
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And current password kutusuna yeni sifreyi girer
-      And  save tusuna tiklar
-      Then "An error has occurred! The password could not be changed." yazisi gorulur
+    Scenario: TC_006 yedi karakterli sifre kullanilir
+      And new password kutusuna yeni sifreyi girer "GMIbank"
+      Then password guvenlik seiye cizelgesinin renginin degistigini gözlemler
 
     @TC_007
-    Scenario: TC_007_sifrede en az bir rakam kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin turuncu oldugunu gözlemler
-    @TC_008
-    Scenario: TC_008_sifrede rakam kullanilmaz
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin kirmizi oldugunu gözlemler
-
-    @TC_009
-    Scenario: TC_009 sifrede ozel karakter kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin turuncu oldugunu gözlemler
-
-    @TC_010
-    Scenario: TC_0010 sifrede ozel karakter kullanilmaz
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin kirmizi oldugunu gözlemler
-
-    @TC_011
-    Scenario: TC_0011 alti karakterli bir sifre kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin kirmizi oldugunu gözlemler
-    @TC_012
-    Scenario: TC_0012 yedi karakterli sifre kullanilir
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      Then password guvenlik seiye cizelgesinin renginin turuncu oldugunu gözlemler
-    @TC_013
-    Scenario: TC_0013 sifre onaylanabilinir olur
-      Given kullanici https://gmibank.com/ sayfasina gider
-      And gecerli kullanici bilgileri ile giris yapar
-      And home page teki kullanici adi uzerine gelerek "password" tusuna tiklar
-      And current password kutusuna eski sifreyi girer
-      And new password kutusuna yeni sifreyi girer
-      And coonfirm new password kutusuna yeni sifreyi gir
+    Scenario: TC_007 sifre onaylanir
+      And new password kutusuna yeni sifreyi girer "GMIbank1."
+      And confirm new password kutusuna yeni sifreyi girer "GMIbank1."
       And save tusuna tiklar
-      Then "password changed " yazisi gorulur
+      Then "Password changed!" yazisi gorulur
+      And current password kutusunun icini temizler
+      And current password kutusuna guncel sifreyi girer "GMIbank1."
+      And new password kutusunun icini temizler
+      And new password kutusuna yeni sifreyi girer "Team20Cus"
+      And confirm new password kutusunun icini temizler
+      And confirm new password kutusuna yeni sifreyi girer "Team20Cus"
+      And save tusuna tiklar
+
 
 
