@@ -1,4 +1,4 @@
-@US15Test
+@US15Test @SmokeTest
 Feature: US15 Test
 
   Background: Gmibank sitesine customer olarak giriş yapma.
@@ -15,11 +15,15 @@ Feature: US15 Test
     Given My Account dropdown'ı seçip tıklayınız
     Then  Kullanıcı hesap tablosunda hesap türleri görünür olmalı.
     Then  Kullanıcı hesap tablosunda hesap bilancoları görünür olmalı.
+    And   menu butonuna tıklayınız
+    Then  Sign Out butonuna tıklayınız.
 
   @TC15_02
   Scenario: TC15_02 Kullanıcı hesap tablosunda geçmiş yapılan işlemler görünür olmalı.
     Given My Account dropdown'ı seçip tıklayınız
     Then  Kullanıcı View Transaction butonuna tıklayınca hesap tablosunda geçmiş yapılan işlemleri görebilmeli.
+    And   menu butonuna tıklayınız
+    Then  Sign Out butonuna tıklayınız.
 
 
 
