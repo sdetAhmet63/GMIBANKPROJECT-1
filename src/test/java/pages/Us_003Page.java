@@ -22,5 +22,12 @@ public class Us_003Page {
 
         @FindBy(xpath = "//li[@class='point']")
         public List<WebElement> colorLevel;
+
+        @FindBy (id = "secondPassword")
+        public WebElement secondPasswordKutusu;
+
+         @FindBy (id = "register-submit")
+         public WebElement registerButonu;
+
     }
 

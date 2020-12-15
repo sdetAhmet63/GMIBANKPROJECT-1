@@ -3,7 +3,7 @@
 Feature: US_003 Registration page should restrict password usage to a secure and high level passcode
 
   Background: kullanici hesap olusturmak icin registration sayfasina gider
-    Given kullanici "http://www.gmibank.com/account/register" sayfasina gider
+    Given kullanici kayit "http://www.gmibank.com/account/register" sayfasina gider
 
 
   @TC00301

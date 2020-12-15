@@ -1,7 +1,7 @@
   @US_008
     Feature: Ana sayfadaki şifre bölümü düzenlenebilir
     Background:kullanici giris yapar
-      Given kullanici "http://www.gmibank.com/login" sayfasina gider
+      Given kullanici1 "http://www.gmibank.com/login" sayfasina gider
       And gecerli kullanici adini girer "team20customer1"
       And gecerli sifreyi girer "Team20Cus"
       And "sign in" tusuna basar

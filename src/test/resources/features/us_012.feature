@@ -5,7 +5,7 @@
       Given Employee valid bilgiler ile "https://gmibank.com/" sayfasina employee olarak giriş yapar.
       And Employee My Operations modulu içerisinden Manage Costumers butonunu tıklar.
 
-     @TC_001
+     @TC_001mustafa
     Scenario: TC-0001 Kullanici customer listesinde ID'nin gorunuyor ve tıkanabiliyor olduguna bakar.
        Then Employee sayfada customer ID'sinin gorunuyor ve tıkanabiliyor oldugunu assert eder.
 

@@ -19,8 +19,8 @@ public class US_006_007StepDefinitions {
 
 
 
-    @Given("kullanici {string} sayfasina gider")
-    public void kullanici_sayfasina_gider(String string) {
+    @Given("kullanici customer {string} sayfasina gider")
+    public void kullanici_customer_sayfasina_gider(String string) {
         Driver.getDriver().get(string);
     }
 

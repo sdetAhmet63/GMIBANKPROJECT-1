@@ -23,7 +23,7 @@ public class Us_001_002StepDefinitions {
         Driver.waitAndClick(us001Page.profilLogosu,1);
         Driver.isClick(us001Page.profilLogosu);
         Driver.waitAndClick(us001Page.registerLinki,1);
-        Driver.isClick(us001Page.registerLinki);
+        Driver.waitAndClick(us001Page.registerLinki,1);
     }
 
     @Given("kullanici kayit sayfasinda ssn kutusuna tiklar ve {string} ni girer")
@@ -87,7 +87,7 @@ public class Us_001_002StepDefinitions {
     @Given("kullanici kayit sayfasinda son ad kutusuna tiklar")
     public void kullanici_kayit_sayfasinda_son_ad_kutusuna_tiklar() {
         Driver.waitAndClick(us001Page.sonAdKutusu,1);
-        Driver.isClick(us001Page.sonAdKutusu);
+        //Driver.isClick(us001Page.sonAdKutusu);
     }
 
     @Then("kullanici ilk ad kutusunun altinda herhangi bir uyari görmez")
