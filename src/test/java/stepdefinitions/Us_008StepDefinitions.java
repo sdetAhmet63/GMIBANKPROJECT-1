@@ -16,8 +16,8 @@ public class Us_008StepDefinitions {
     Us_008_Page Us_008_Page =new Us_008_Page();
     SoftAssert soft=new SoftAssert();
 
-    @Given("kullanici {string} sayfasina gider")
-    public void kullanici_sayfasina_gider(String string) {
+    @Given("kullanici1 {string} sayfasina gider")
+    public void kullanici1_sayfasina_gider(String string) {
         Driver.wait(5);
         Driver.getDriver().navigate().to(string);
     }

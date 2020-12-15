@@ -125,12 +125,11 @@ public class Us_09_10_11StepDefinition {
 
     @Given("kullanici  account kutusundan {string},{string} degerini secer")
     public void kullanici_account_kutusundan_degerini_secer(String string, String string2) {
-       Select select=new Select(page.countryDropDownKutusu);
-        Actions  actions=new Actions(Driver.getDriver());
-       select.selectByVisibleText(string);
-       actions.keyDown(Keys.CONTROL).perform();
-       select.selectByVisibleText(string2);
-       actions.keyUp(Keys.CONTROL).perform();
+       Select select=new Select(page.customerMultipleKutusu);
+        if(select.isMultiple()){
+            select.selectByVisibleText(string);
+            select.selectByVisibleText(string2);
+        }
        
 
     }
@@ -139,6 +138,7 @@ public class Us_09_10_11StepDefinition {
     public void kullanici_save_butonuna_basar() {
         Driver.waitAndClick(page.saveButonu,1);
     }
+
 
 
 }

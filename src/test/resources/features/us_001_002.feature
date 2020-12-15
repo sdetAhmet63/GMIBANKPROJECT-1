@@ -440,10 +440,10 @@ Feature: GMI BANK Kayit islemi
       #|132-55-9658  |Heikki   |Kolmanen |Uudenmaankatu No:36 Helsinki                       |563-456-1985           |HeKol          |heikkikolmanengmail.com    |
 
 
-  @SmokeTest
+ # @SmokeTest
   Scenario Outline: Us_1_SmokeTest kullanici gmi bank kayit sayfasinda kayit islemi gerceklestirir
-    Given kullanici "https://gmibank.com/" sayfasina gider
-    And kullanici profil logolu dropdown ve icindeki register linkini tiklar
+   Given kullanici "https://gmibank.com/" sayfasina gider
+  And kullanici profil logolu dropdown ve icindeki register linkini tiklar
     And kullanici kayit sayfasinda ssn kutusuna tiklar ve "<ssn numarasi>" ni girer
     And kullanici ilk ad kutusuna "<ilkad>" ini girer
     And kullanici son ad kutusuna "<sonad>" ini girer

@@ -17,8 +17,8 @@ public class Us_003StepDefinitions {
     SoftAssert soft=new SoftAssert();
     static  char charachter = (char) ThreadLocalRandom.current().nextInt(33, 47);
 
-    @Given("kullanici {string} sayfasina gider")
-    public void kullanici_sayfasina_gider(String string) {
+    @Given("kullanici kayit {string} sayfasina gider")
+    public void kullanici_kayit_sayfasina_gider(String string) {
 
         Driver.getDriver().get(string);
 
@@ -170,6 +170,15 @@ public class Us_003StepDefinitions {
     }
 
 
+    @Given("kullanici New password confirmation kutusuna yedi karakterli {string} girer ve guvenlik seviyesini kontrol eder")
+    public void kullanici_New_password_confirmation_kutusuna_yedi_karakterli_girer_ve_guvenlik_seviyesini_kontrol_eder(String string) {
+        Driver.waitAndSendText(us_003Page.secondPasswordKutusu,string,1);
+    }
+
+    @Given("kullanici register butonuna tiklar")
+    public void kullanici_register_butonuna_tiklar() {
+        Driver.waitAndClick(us_003Page.registerButonu,1);
+    }
 
 }
 
