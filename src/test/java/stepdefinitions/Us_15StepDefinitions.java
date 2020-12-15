@@ -3,10 +3,8 @@ package stepdefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import pages.Us_15Page;
-import utilities.ConfigurationReader;
 import utilities.Driver;
 
 public class Us_15StepDefinitions {
