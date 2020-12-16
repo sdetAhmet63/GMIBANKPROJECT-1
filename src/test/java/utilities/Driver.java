@@ -1,7 +1,6 @@
 package utilities;
 import com.google.common.base.Function;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,6 +10,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.*;
+import pages.US_006_007Page;
+
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -59,6 +60,28 @@ public class Driver {
         driver.manage().window().maximize();
 
         return driver;
+    }
+
+   public static void  singInadmin(){
+        US_006_007Page signIn=new US_006_007Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("admin_username"));
+        signIn.signInPasswordKutusu.sendKeys(ConfigurationReader.getProperty("admin_password"));
+        signIn.signInSaveButonu.click();
+    }
+    public static void  singInemployee(){
+        US_006_007Page signIn=new US_006_007Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("employee_username"));
+        signIn.signInPasswordKutusu.sendKeys(ConfigurationReader.getProperty("employee_password"));
+        signIn.signInSaveButonu.click();
+    }
+    public static void  singIncustomer(){
+        US_006_007Page signIn=new US_006_007Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("employee_username"));
+        signIn.signInPasswordKutusu.sendKeys(ConfigurationReader.getProperty("employee_password"));
+        signIn.signInSaveButonu.click();
     }
 
     public static void closeDriver() {
@@ -195,6 +218,13 @@ public class Driver {
     public static void verifyElementNotDisplayed(By by) {
         try {
             assertFalse("Element should not be visible: " + by, Driver.getDriver().findElement(by).isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void verifyElementNotDisplayed(WebElement element) {
+        try {
+            assertFalse("Element should not be visible: " + element,element.isDisplayed());
         } catch (NoSuchElementException e) {
             e.printStackTrace();
         }
