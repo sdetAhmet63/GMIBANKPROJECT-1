@@ -2,7 +2,7 @@
 @us_006_007_kullanicigiris
 Feature: GmiBank Kullanici Bilgi Gunceller
   Scenario:TC_0001 Kullanici gmibank giris yapar
-    Given kullanici "http://gmibank.com" sayfasina gider
+    Given kullanici customer "http://gmibank.com" sayfasina gider
     And kullanici menu dropdown tiklar
     And kullanici sing in tiklar
     And kullanici username kutusuna tiklar
