@@ -7,12 +7,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Country {
 
     /*
-
  "country": {
             "id": 3,
             "name": "ISLAND",
             "states": null
-
  */
 
     private int id;

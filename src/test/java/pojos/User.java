@@ -11,7 +11,6 @@ public class User {
     // onu önemseme ignore et
 
     /*
-
  "user": {
             "id": 41437,
             "login": "adf",
@@ -22,7 +21,6 @@ public class User {
             "langKey": "en",
             "imageUrl": null,
             "resetDate": null
-
  */
 
     private int id;
@@ -107,4 +105,3 @@ public class User {
         this.resetDate = resetDate;
     }
 }
-
