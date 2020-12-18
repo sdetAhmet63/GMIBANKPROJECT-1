@@ -55,4 +55,7 @@ public class Us_001_002Page {
     public WebElement emailGecerliDegilUyarisi;
     @FindBy (id="firstPassword")
     public WebElement yeniSifreKutusu;
+    @FindBy (id="secondPassword")
+    public WebElement ikinciSifreKutusu;
+
 }
