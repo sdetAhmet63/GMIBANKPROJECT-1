@@ -17,8 +17,7 @@ public class Us_09_10_11StepDefinition {
 
     @Given("kullanici employee olarak giris yapar")
     public void kullanici_employee_olarak_giris_yapar() {
-        Driver.singInemployee();
-        Driver.wait(1);
+
     }
 
     @Given("kullanici sayfasina {string} gider")

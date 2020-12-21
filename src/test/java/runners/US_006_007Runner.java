@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
                 "junit:target/xml-report/cucumber.xml"},
         features = "src/test/resources/features",
         glue = "stepdefinitions",
-        tags = "@us_006_007_kullaniciayarlar16",
+        tags = "@RegisterErstellen",
         dryRun = false
 
 

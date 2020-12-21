@@ -1,8 +1,10 @@
 package utilities;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.*;
-
+import org.testng.Assert;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,20 +16,17 @@ public class ExcelUtil {
     private Workbook workBook;
     private Sheet workSheet;
     private String path;
-    public ExcelUtil(String path, String sheetName) {//This Constructor is to open and access the excel file
+    public ExcelUtil(String path, String sheetName) throws IOException {//This Constructor is to open and access the excel file
         this.path = path;
-        try {
             // Opening the Excel file
             FileInputStream fileInputStream = new FileInputStream(path);
             // accessing the workbook
             workBook = WorkbookFactory.create(fileInputStream);
             //getting the worksheet
             workSheet = workBook.getSheet(sheetName);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+
     }
-    //===============Getting the number of columns in a specific single row=================
+    //==Getting the number of columns in a specific single row == Belirli bir tek satırdaki sütun sayısını elde etmek
     public int columnCount() {
         //getting how many numbers in row 1
         return workSheet.getRow(0).getLastCellNum();
@@ -47,7 +46,7 @@ public class ExcelUtil {
             throw new RuntimeException(e);
         }
     }
-    //============getting all data into two dimentional array and returning the data===
+    // ============ tüm verileri iki boyutlu diziye almak ve verileri döndürmek ===
     public String[][] getDataArray() {
         String[][] data = new String[rowCount()][columnCount()];
         for (int i = 0; i < rowCount(); i++) {

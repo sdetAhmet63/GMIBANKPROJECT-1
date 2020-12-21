@@ -10,6 +10,8 @@ import pojos.Customer;
 import utilities.ConfigurationReader;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
@@ -46,14 +48,14 @@ public class CustomerApiStepDef {
                 .auth()
                 .oauth2(ConfigurationReader.getProperty("token"))
                 .contentType(ContentType.JSON)
-                .when()
+           .when()
                 .get(api_endpoint)  // api_endpoint'ini al response ata.
-                .then()
+           .then()
                 .contentType(ContentType.JSON)
                 .statusCode(200)
                 .extract()
                 .response();
-        //    response.prettyPrint();   // response yazdır.
+        response.prettyPrint();   // response yazdır.
 
         // runner'a gidip false yapıp çalıştırıyoruz. muhtemelen token değiştiği için
         // Aauthorization hatası verecek 200 değilde 401 çıkacak.
@@ -65,9 +67,11 @@ public class CustomerApiStepDef {
 
     }
 
+ //   List<String> expectedSsn = new ArrayList<>();
+
     @Given("user deserialization customer data json to java pojo")
     public void user_deserialization_customer_data_json_to_java_pojo() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
+     /*   ObjectMapper objectMapper = new ObjectMapper();
         customers = objectMapper.readValue(response.asString(), Customer[].class);
         for (int i = 0; i < customers.length; i++) {
             System.out.println(customers[i].getFirstName());
@@ -78,7 +82,7 @@ public class CustomerApiStepDef {
                 System.out.println(customers[0].getUser().getEmail());
             }
         }
-
+*/
     }
 
     @Then("user validates all data")

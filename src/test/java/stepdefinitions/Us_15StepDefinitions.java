@@ -29,11 +29,13 @@ public class Us_15StepDefinitions {
     }
     @Given("username {string} giriniz")
     public void username_giriniz(String string) {
+        Driver.wait(1);
         us15Page.username.sendKeys(string);
 
     }
     @Given("password {string} giriniz")
     public void password_giriniz(String string) {
+        Driver.wait(1);
         us15Page.password.sendKeys(string);
 
     }

@@ -506,6 +506,7 @@ public class Driver {
         signIn.signInSaveButonu.click();
     }
     public static void  singInemployee(){
+        Driver.wait(1);
         Us_09_10_11Page signIn=new Us_09_10_11Page();
         Driver.getDriver().get("http://www.gmibank.com/login");
         signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("employee_username"));

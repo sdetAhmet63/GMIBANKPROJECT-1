@@ -23,11 +23,14 @@ public class Us_012Page {
     @FindBy (xpath = "//button[@type='submit']")
     public WebElement signInSaveButonu;
 
-    @FindBy(partialLinkText = "My Operations")
+    @FindBy(xpath = "//*[.='My Operations']")
     public WebElement myOperationsLinki;
 
-    @FindBy(partialLinkText = "Manage Customers")
+    @FindBy(xpath = "//*[@id=\"entity-menu\"]/div/a[1]/span")
     public WebElement manageCustomersLinki;
+
+    @FindBy(xpath = "//*[@id=\"jh-create-entity\"]/span")
+    public WebElement newCustomer;
 
     @FindBy(xpath = "//tbody/tr/td[1]")
     public WebElement IDButonu;
