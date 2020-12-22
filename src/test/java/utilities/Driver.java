@@ -11,6 +11,8 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.*;
+import pages.Us_012Page;
+import pages.Us_09_10_11Page;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -484,7 +486,7 @@ public class Driver {
         }
 
     }
-
+*/
 
     public static void selectDropDownByIndex(WebDriver driver, WebElement element, int index) {
         Select select = new Select(element);
@@ -496,10 +498,74 @@ public class Driver {
         select.selectByVisibleText(value);
     }
 
-*/
+    public static void  singInadmin(){
+        Us_09_10_11Page signIn=new Us_09_10_11Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("admin_username"));
+        signIn.signInPasswordKutusu.sendKeys(ConfigurationReader.getProperty("admin_password"));
+        signIn.signInSaveButonu.click();
+    }
+    public static void  singInemployee(){
+        Us_09_10_11Page signIn=new Us_09_10_11Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        signIn.signInUserNameKutusu.sendKeys(ConfigurationReader.getProperty("employee_username"));
+        signIn.signInPasswordKutusu.sendKeys(ConfigurationReader.getProperty("employee_password"));
+        signIn.signInSaveButonu.click();
+    }
+
+
+    public static String getColor(WebElement element, String cssValue) {
+        String color = element.getCssValue(cssValue); // RGB
+        String hex = "";
+        int r, g, b = 0;
+        if (color.contains("rgba")) {
+            String[] numbers = color.replace("rgba(", "").replace(")", "").split(",");
+            r = Integer.parseInt(numbers[0].trim());
+            g = Integer.parseInt(numbers[1].trim());
+            b = Integer.parseInt(numbers[2].trim());
+            hex = "#" + Integer.toHexString(r) + Integer.toHexString(g) + Integer.toHexString(b);
+        } else {
+            String[] numbers = color.replace("rgb(", "").replace(")", "").split(",");
+            r = Integer.parseInt(numbers[0].trim());
+            g = Integer.parseInt(numbers[1].trim());
+            b = Integer.parseInt(numbers[2].trim());
+            hex = "#" + Integer.toHexString(r) + Integer.toHexString(g) + Integer.toHexString(b);
+        }
+        return hex;
+    }
 
 
 
+    public static void verifyElementNotDisplayed(WebElement element) {
+        try {
+            assertFalse("Element should not be visible: " + element, element.isDisplayed());
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public static void employeeManageCustomersClick(){
+        Us_012Page us_012Page = new Us_012Page();
+        Driver.getDriver().get("http://www.gmibank.com/login");
+        us_012Page.myOperationsLinki.click();
+        wait(1);
+        us_012Page.manageCustomersLinki.click();
+        wait(1);
+    }
+
+    public static void isClick(WebElement element) {
+        try {
+            assertTrue("Element not visible: " + element,element.isEnabled());
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element not found: " + element);
+        }
+    }
+    public static void isVisible(WebElement element) {
+        try {
+            assertTrue("Element not visible: " + element,element.isDisplayed());
+        } catch (NoSuchElementException e) {
+            Assert.fail("Element not found: " + element);
+        }
+    }
 
 }
