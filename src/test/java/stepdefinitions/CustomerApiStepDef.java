@@ -105,22 +105,22 @@ public class CustomerApiStepDef {
     }
     @Given("kullanici eyaletleri texte yazdırır")
     public void kullanici_eyaletleri_texte_yazdırır() throws IOException {
-   ObjectMapper objectMapper = new ObjectMapper();
-        customers = objectMapper.readValue(response.asString(), Customer[].class);
-        for (int i = 0; i < customers.length; i++) {
-            stateList.add(customers[i].getState());
-            WriteTxtUtil.saveAllStates("State.txt", States[].class);
-        }
-        System.out.println(stateList);
+ //  ObjectMapper objectMapper = new ObjectMapper();
+   //     customers = objectMapper.readValue(response.asString(), Customer[].class);
+     //   for (int i = 0; i < customers.length; i++) {
+       //     stateList.add(customers[i].getState());
+         //   WriteTxtUtil.saveAllStates("State.txt", States[].class);
+     //   }
+     //   System.out.println(stateList);
 
-        System.out.println("************************************");
-        for(int j = 0; j < customers.length; j++ ) {
-            if (customers[j].getUser()!= null){
-                System.out.println(customers[0].getUser().getEmail());
-            }
-        }
+       // System.out.println("************************************");
+     //   for(int j = 0; j < customers.length; j++ ) {
+       //     if (customers[j].getUser()!= null){
+         //       System.out.println(customers[0].getUser().getEmail());
+  //          }
+ //       }
 
-    }
+}
     @Then("En son oluşturulan kullanıcının Ssn numarası ile api'dan çekilen veriyi karşılaştırıp dogrula.")
     public void en_son_oluşturulan_kullanıcının_Ssn_numarası_ile_api_dan_çekilen_veriyi_karşılaştırıp_dogrula() throws IOException {
 
@@ -128,8 +128,8 @@ public class CustomerApiStepDef {
         Cell cell = row.getCell(0);
         String sonSsn = cell.toString();
 
-    //    ObjectMapper objectMapper = new ObjectMapper();
-    //    customers = objectMapper.readValue(response.asString(), Customer[].class);
+       ObjectMapper objectMapper = new ObjectMapper();
+       customers = objectMapper.readValue(response.asString(), Customer[].class);
 
         String apiSsn = customers[customerSsn.lastIndexOf(customers)].getSsn();
         Assert.assertEquals(apiSsn,sonSsn);

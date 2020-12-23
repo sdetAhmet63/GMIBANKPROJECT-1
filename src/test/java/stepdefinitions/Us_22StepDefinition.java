@@ -31,7 +31,6 @@ public class Us_22StepDefinition {
         String firstName = faker.name().firstName();
         String lastName = faker.name().lastName();
         String adresse = faker.address().fullAddress();
-        String adresse2 = adresse;
         String telefon = faker.number().digits(3) + "-" + faker.number().digits(3) + "-" + faker.number().digits(4);
         String userName = faker.name().username();
         String eMail = faker.name().firstName() + "@hotmail.com";
@@ -249,9 +248,10 @@ public class Us_22StepDefinition {
             Row row = sheet.getRow(1);
             Cell cell = row.getCell(3);
             String cell1 = cell.toString();
+            cell.setCellValue(cell1);
 
         Driver.waitAndSendText(page.adressKutusu,cell1,1);
-            System.out.println("Adress : " + adresse2);
+            System.out.println("Adress : " + cell1);
     }
         @Given("kullanici City kutusuna sehir ismi girer ve bunu excele yazdırır.")
         public void kullanici_City_kutusuna_sehir_ismi_girer_ve_bunu_excele_yazdırır () {
