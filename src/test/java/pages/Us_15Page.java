@@ -28,7 +28,7 @@ public class Us_15Page {
     @FindBy(xpath = "//button[@type=\"submit\"]")
     public WebElement getSignIn;
 
-    @FindBy(xpath = "//span[.='My Operations']")
+    @FindBy(xpath = "//*[.='My Operations']")
     public WebElement myOperationsLink;
 
     @FindBy(linkText = "My Accounts")

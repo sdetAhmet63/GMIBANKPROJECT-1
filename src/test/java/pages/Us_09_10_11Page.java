@@ -69,6 +69,9 @@ public class Us_09_10_11Page {
     @FindBy(xpath = "//span[.='Create or edit a Customer']")
     public WebElement testpass;
 
+    @FindBy(id = "search-ssn")
+    public WebElement searchssn;
+
 
 
 
