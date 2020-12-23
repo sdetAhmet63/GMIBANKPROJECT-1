@@ -2,14 +2,13 @@ package stepdefinitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import org.junit.Assert;
-import pages.Us_0405Page;
+import pages.Us_00405Page;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 
-public class Us_0405StepDefinitions {
+public class Us_00405StepDefinitions {
 
-    Us_0405Page signIn04 = new Us_0405Page();
+    Us_00405Page signIn04 = new Us_00405Page();
     //WebDriverWait wait=new WebDriverWait(Driver.getDriver(),10);
 
     @Given("Kullanici www.gmibank.com gider")
