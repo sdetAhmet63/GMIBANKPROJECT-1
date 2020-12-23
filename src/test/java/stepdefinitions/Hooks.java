@@ -9,10 +9,10 @@ import utilities.Driver;
 public class Hooks {
     // TestNG'deki @BeforeMethod gibi çalışır.
     // Her senaryodan önce çalışır.
-    @Before
-    public void setUp(){
-        System.out.println("setUp Çalıştı.");
-    }
+  //  @Before
+  //  public void setUp(){
+ //       System.out.println("setUp Çalıştı.");
+ //   }
     // TestNG'deki @AfterMethod gibi çalışır.
     // Her senaryodan sonra çalışır.
     @After

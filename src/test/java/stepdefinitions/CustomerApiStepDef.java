@@ -6,9 +6,17 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
+import org.apache.poi.ss.usermodel.*;
+import org.testng.Assert;
 import pojos.Customer;
+import pojos.States;
 import utilities.ConfigurationReader;
+import utilities.Driver;
+import utilities.WriteTxtUtil;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +27,19 @@ import static io.restassured.RestAssured.given;
 public class CustomerApiStepDef {
 
     Response response;
+    States[] states;
     Customer[] customers;
+    String path = "src/test/resources/Api.xlsx";
+    FileInputStream file = new FileInputStream(path);
+    Workbook workbook = WorkbookFactory.create(file);
+    Sheet sheet = workbook.getSheetAt(0); // 1.sheet'e git
+    FileOutputStream fileOutputStream = new FileOutputStream(path);
 
-    @Given("user read all customer and sets response using to api end point {string}")
-    public void user_read_all_customer_and_sets_response_using_to_api_end_point(String api_endpoint) {
+    public CustomerApiStepDef() throws IOException {
+    }
+
+    @Given("kullanici kendisine verilen {string} token ile apiye baglanir")
+    public void kullanici_kendisine_verilen_token_ile_apiye_baglanir(String api_endpoint) {
         // End pointe gidip oradan bilgileri çekiyoruz.
         // given için import otomatik gelmiyor kendimiz yazmamız gerekiyor.
 
@@ -68,25 +85,68 @@ public class CustomerApiStepDef {
     }
 
  //   List<String> expectedSsn = new ArrayList<>();
+      List<String> stateList = new ArrayList<>();
+      List<String> customerSsn = new ArrayList<>();
 
     @Given("user deserialization customer data json to java pojo")
     public void user_deserialization_customer_data_json_to_java_pojo() throws IOException {
-     /*   ObjectMapper objectMapper = new ObjectMapper();
+
+    }
+
+    @Given("kullanici jsonlari javaya cevirir")
+    public void kullanici_jsonlari_javaya_cevirir() {
+
+
+    }
+    @Given("kullanicilarin tum ulkelerin eyaletlerini ve {string} dogrular")
+    public void kullanicilarin_tum_ulkelerin_eyaletlerini_ve_dogrular(String string) {
+
+
+    }
+    @Given("kullanici eyaletleri texte yazdırır")
+    public void kullanici_eyaletleri_texte_yazdırır() throws IOException {
+   ObjectMapper objectMapper = new ObjectMapper();
         customers = objectMapper.readValue(response.asString(), Customer[].class);
         for (int i = 0; i < customers.length; i++) {
-            System.out.println(customers[i].getFirstName());
+            stateList.add(customers[i].getState());
+            WriteTxtUtil.saveAllStates("State.txt", States[].class);
         }
+        System.out.println(stateList);
+
         System.out.println("************************************");
         for(int j = 0; j < customers.length; j++ ) {
             if (customers[j].getUser()!= null){
                 System.out.println(customers[0].getUser().getEmail());
             }
         }
-*/
+
+    }
+    @Then("En son oluşturulan kullanıcının Ssn numarası ile api'dan çekilen veriyi karşılaştırıp dogrula.")
+    public void en_son_oluşturulan_kullanıcının_Ssn_numarası_ile_api_dan_çekilen_veriyi_karşılaştırıp_dogrula() throws IOException {
+
+        Row row = sheet.getRow(1);
+        Cell cell = row.getCell(0);
+        String sonSsn = cell.toString();
+
+    //    ObjectMapper objectMapper = new ObjectMapper();
+    //    customers = objectMapper.readValue(response.asString(), Customer[].class);
+
+        String apiSsn = customers[customerSsn.lastIndexOf(customers)].getSsn();
+        Assert.assertEquals(apiSsn,sonSsn);
+
     }
 
-    @Then("user validates all data")
-    public void user_validates_all_data() {
+    @Given("Tüm müşterileri texte yazdır.")
+    public void tüm_müşterileri_texte_yazdır() throws IOException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        customers = objectMapper.readValue(response.asString(), Customer[].class);
+        for (int i = 0; i < customers.length; i++) {
+            customerSsn.add(customers[i].getSsn());
+            WriteTxtUtil.saveDataInFileWithAllCustomerInfo("Customer.txt", Customer[].class);
+        }
+
+        System.out.println(stateList);
 
     }
 

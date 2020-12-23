@@ -55,12 +55,19 @@ Feature: US22 TEST
     And   kullanici save butonuna basar
 
 
-  @USApi_22 @Smoketest
+  @USApi_22_01
 
   Scenario: TC01_kullanici apinin calistini kontrol eder
-    Given kullanici kendisine verilen token ile apiye baglanir
+    Given kullanici kendisine verilen "https://www.gmibank.com/api/tp-customers" token ile apiye baglanir
     Given kullanici jsonlari javaya cevirir
-    Given kullanicilarin tum ulkelerin eyaletlerini ve "ATHENS" dogrular
+    Given Tüm müşterileri texte yazdır.
+    Then  En son oluşturulan kullanıcının Ssn numarası ile api'dan çekilen veriyi karşılaştırıp dogrula.
+
+
+  @USApi_22_02
+  Scenario: TC02_kullanici
+    Given kullanici kendisine verilen "https://www.gmibank.com/api/tp-customers" token ile apiye baglanir
+    Given kullanici jsonlari javaya cevirir
     Given kullanici eyaletleri texte yazdırır
-    Then kullanici eyaleti "Amsterdam" olanlarin sayisini yazdirir
+    Then  kullanici En son oluşturulan kullanıcının Eyalet ismi ve Ssn numarası ile api'dan çekilen veriyi karşılaştırıp dogrula.
 

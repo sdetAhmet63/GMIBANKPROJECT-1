@@ -1,22 +1,99 @@
 package utilities;
 
+import pojos.Customer;
+import pojos.States;
+
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class WriteTxtUtil {
-    public static void main(String[] args) {
-        writeToFile("AllCustomerData.txt","Bekir Tufan");
-    }
 
-    public static void writeToFile(String filePath, String data){
+public class WriteTxtUtil {
+    public static void saveDataInFile(String fileName, Customer[] customers)  {
         try {
-            FileWriter myWriter = new FileWriter(filePath);
-            myWriter.write(data);
-            myWriter.close();
-            System.out.println("Successfully wrote to the file.");
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+            for (int i=0;i<customers.length;i++)
+
+                writer.append(customers[i].getSsn()+",\n");
+
+            writer.close();
+        } catch(Exception e){
+
         }
     }
+    public static void saveDataInFileWithSSN(String fileName, Customer customers)  {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+
+            writer.append(customers.getSsn());
+
+            writer.close();
+        } catch(Exception e){
+
+        }
+    }
+
+
+    public static void saveDataInFileWithUserInfo(String fileName, Customer customer)  {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+
+            writer.append(customer.getUser().getFirstName());
+
+            writer.close();
+        } catch(Exception e){
+
+        }
+    }
+
+    Customer[] customers;
+    public static void saveDataInFileWithAllCustomerInfo(String fileName, Class<Customer[]> customers)  {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+
+    //        for (int i =0; i<customers.length; i++){
+
+    //            writer.append(customers[i].getFirstName()+" , "+customers[i].getLastName()+","+customers[i].getCity()+" , "+customers[i].getAddress());
+   //             if(customers[i].getUser() != null)
+    //                writer.append(customers[i].getUser().getFirstName());
+    //            if(customers[i].getCountry() != null)
+   //                 writer.append(customers[i].getCountry().getName()+"\n");
+
+   //         }
+
+  //          writer.close();
+        } catch(Exception e){
+
+        }
+    }
+
+    public static void saveAllStates(String fileName, Class<States[]> states)  {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+
+   //         for (int i=0; i<states.length; i++)
+ //               writer.append(states[i].getName()+" , "+states[i].getId()+"\n");
+
+ //           writer.close();
+        } catch(Exception e){
+
+        }
+    }
+
+
+
+    public static void saveAllStates2(String fileName, States[] states)  {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
+
+            for (int i=0; i<states.length; i++)
+                writer.append(states[i].getName()+" , "+states[i].getId()+"\n");
+
+            writer.close();
+        } catch(Exception e){
+
+        }
+    }
+
+
 }
