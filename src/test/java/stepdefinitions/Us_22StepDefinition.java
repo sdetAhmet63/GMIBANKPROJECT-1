@@ -102,8 +102,8 @@ public class Us_22StepDefinition {
 
         Driver.waitAndSendText(rgstr.ssnKutusu, ssn, 2);
 
-            Row row = sheet.getRow(1); // 1.row'a yani başlığa git diyoruz.
-            Cell cell = row.createCell(0); // createCell(3) 1. satırda 4. hücreyi oluştur dedik.
+            Row row = sheet.getRow(1);
+            Cell cell = row.createCell(0);
             cell.setCellValue(ssn); // .setCellValue() methoduyla bu Stringi oluştur dedik.
 
             System.out.println("SSN : " + ssn);

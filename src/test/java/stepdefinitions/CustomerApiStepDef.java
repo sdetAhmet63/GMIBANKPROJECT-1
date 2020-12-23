@@ -8,10 +8,12 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.apache.poi.ss.usermodel.*;
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import pojos.Customer;
 import pojos.States;
 import utilities.ConfigurationReader;
 import utilities.Driver;
+import utilities.ExcelUtil;
 import utilities.WriteTxtUtil;
 
 import java.io.FileInputStream;
@@ -20,6 +22,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
@@ -34,6 +37,20 @@ public class CustomerApiStepDef {
     Workbook workbook = WorkbookFactory.create(file);
     Sheet sheet = workbook.getSheetAt(0); // 1.sheet'e git
     FileOutputStream fileOutputStream = new FileOutputStream(path);
+    ExcelUtil excelUtil;
+    List<Map<String, String>> testData;
+
+
+    @BeforeMethod
+    public void getTestData() throws IOException {
+        // ExcellUtil class'ını kullanarak file ve Sheet'in path'ini yazıyoruz.
+        // resource içerisindeke excel dosyası üzerine gittik sağ tıklayıp copy absolutepath yaptık.
+        // ikinci String kısmınada excel dosyasındaki alttaki sayfa ismini yazıyoruz.
+        excelUtil = new ExcelUtil("src/test/resources/Api.xlsx", "Sheet1");
+
+        // excelUtil class'ından getDataList() methodunu excel'den data alabilmek için çağıralım.
+        testData = excelUtil.getDataList();
+    }
 
     public CustomerApiStepDef() throws IOException {
     }
@@ -124,12 +141,12 @@ public class CustomerApiStepDef {
     @Then("En son oluşturulan kullanıcının Ssn numarası ile api'dan çekilen veriyi karşılaştırıp dogrula.")
     public void en_son_oluşturulan_kullanıcının_Ssn_numarası_ile_api_dan_çekilen_veriyi_karşılaştırıp_dogrula() throws IOException {
 
-        Row row = sheet.getRow(1);
-        Cell cell = row.getCell(0);
-        String sonSsn = cell.toString();
+       Row row = sheet.getRow(1);
+       Cell cell = row.getCell(0);
+       String sonSsn = cell.toString();
 
-       ObjectMapper objectMapper = new ObjectMapper();
-       customers = objectMapper.readValue(response.asString(), Customer[].class);
+  //     ObjectMapper objectMapper = new ObjectMapper();
+   //    customers = objectMapper.readValue(response.asString(), Customer[].class);
 
         String apiSsn = customers[customerSsn.lastIndexOf(customers)].getSsn();
         Assert.assertEquals(apiSsn,sonSsn);
